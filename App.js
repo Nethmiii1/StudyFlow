@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import SubjectDetailsScreen from './screens/SubjectDetailsScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import AddSubjectScreen from './screens/AddSubjectScreen';
+import EditSubjectScreen from './screens/EditSubjectScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,7 +37,9 @@ export default function App() {
     },
   };
 
-  const currentTheme = isDarkMode ? theme.dark : theme.light;
+  const currentTheme = isDarkMode
+    ? theme.dark
+    : theme.light;
 
   return (
     <NavigationContainer>
@@ -50,6 +54,7 @@ export default function App() {
           },
         }}
       >
+        {/* Home */}
         <Stack.Screen
           name="Home"
           options={{ title: 'StudyFlow' }}
@@ -63,6 +68,7 @@ export default function App() {
           )}
         </Stack.Screen>
 
+        {/* Subject Details */}
         <Stack.Screen
           name="SubjectDetails"
           options={{ title: 'Subject Details' }}
@@ -76,6 +82,33 @@ export default function App() {
           )}
         </Stack.Screen>
 
+        {/* Add Subject */}
+        <Stack.Screen
+          name="AddSubject"
+          options={{ title: 'Add Subject' }}
+        >
+          {(props) => (
+            <AddSubjectScreen
+              {...props}
+              theme={currentTheme}
+            />
+          )}
+        </Stack.Screen>
+
+        {/* Edit Subject */}
+        <Stack.Screen
+          name="EditSubject"
+          options={{ title: 'Edit Subject' }}
+        >
+          {(props) => (
+            <EditSubjectScreen
+              {...props}
+              theme={currentTheme}
+            />
+          )}
+        </Stack.Screen>
+
+        {/* Settings */}
         <Stack.Screen
           name="Settings"
           options={{ title: 'Settings' }}

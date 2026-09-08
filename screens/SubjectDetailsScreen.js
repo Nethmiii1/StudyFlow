@@ -6,7 +6,9 @@ export default function SubjectDetailsScreen({ route }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{subject.name}</Text>
+      <Text style={styles.title}>
+        {subject.name}
+      </Text>
 
       <Text style={styles.code}>
         Subject Code: {subject.code}
@@ -21,7 +23,10 @@ export default function SubjectDetailsScreen({ route }) {
       </Text>
 
       <View style={styles.infoBox}>
-        <Text style={styles.infoTitle}>Study Tip</Text>
+        <Text style={styles.infoTitle}>
+          Study Tip
+        </Text>
+
         <Text style={styles.infoText}>
           Review your lecture notes regularly and practise
           questions related to this subject.

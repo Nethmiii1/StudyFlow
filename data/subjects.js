@@ -61,4 +61,4 @@ const subjects = [
   },
 ];
 
-export default subjects;
+export default subjects;                                

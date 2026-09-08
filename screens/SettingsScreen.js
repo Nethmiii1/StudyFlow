@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -6,34 +6,61 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default function SettingsScreen() {
-  const [notificationsEnabled, setNotificationsEnabled] = useState(true);
-
+export default function SettingsScreen({
+  isDarkMode,
+  setIsDarkMode,
+  theme,
+}) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Settings</Text>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: theme.background },
+      ]}
+    >
+      <Text
+        style={[
+          styles.title,
+          { color: theme.text },
+        ]}
+      >
+        Settings
+      </Text>
 
-      <View style={styles.settingRow}>
+      <View
+        style={[
+          styles.settingRow,
+          {
+            backgroundColor: theme.card,
+            borderColor: theme.border,
+          },
+        ]}
+      >
         <View style={styles.textContainer}>
-          <Text style={styles.settingTitle}>
-            Study Reminders
+          <Text
+            style={[
+              styles.settingTitle,
+              { color: theme.text },
+            ]}
+          >
+            Dark Mode
           </Text>
 
-          <Text style={styles.settingDescription}>
-            Enable reminders to help you remember your study sessions.
+          <Text
+            style={[
+              styles.settingDescription,
+              { color: theme.secondaryText },
+            ]}
+          >
+            Change the appearance of StudyFlow.
           </Text>
         </View>
 
         <Switch
-          value={notificationsEnabled}
-          onValueChange={setNotificationsEnabled}
+          value={isDarkMode}
+          onValueChange={setIsDarkMode}
         />
       </View>
-
-      <Text style={styles.status}>
-        Reminders are{' '}
-        {notificationsEnabled ? 'enabled' : 'disabled'}.
-      </Text>
     </View>
   );
 }
@@ -41,30 +68,27 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
-    backgroundColor: '#F5F7FA',
+    padding: 20,
   },
 
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 30,
+    marginBottom: 20,
   },
 
   settingRow: {
-    backgroundColor: '#FFFFFF',
-    padding: 18,
-    borderRadius: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    padding: 18,
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#E4E7EC',
   },
 
   textContainer: {
     flex: 1,
-    paddingRight: 15,
+    marginRight: 15,
   },
 
   settingTitle: {
@@ -76,11 +100,5 @@ const styles = StyleSheet.create({
   settingDescription: {
     fontSize: 14,
     lineHeight: 20,
-  },
-
-  status: {
-    marginTop: 20,
-    fontSize: 15,
-    fontWeight: '600',
   },
 });
