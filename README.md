@@ -125,9 +125,9 @@ The Home screen retrieves subjects from MockAPI and displays them using `FlatLis
 
 The Home screen displays the subjects retrieved from MockAPI and provides a search function. Users can also add, edit, and delete subjects.
 
-### Add Subject Screen
+### Add New Subject Screen
 
-The Add Subject screen provides a form for creating a new subject. The entered information is submitted to MockAPI using a POST request.
+The Add New Subject screen provides a form for creating a new subject. The entered information is submitted to MockAPI using a POST request.
 
 ### Edit Subject Screen
 
@@ -147,19 +147,19 @@ The following screenshots demonstrate the completed Sprint 2 version of StudyFlo
 
 ### Home Screen
 
-![StudyFlow Home Screen](https://github.com/user-attachments/assets/196bd083-a059-4d65-ac51-6ae161521507)
+![StudyFlow Home Screen](https://github.com/user-attachments/assets/24f971df-d7fb-48ec-a060-4f3214944adc)
 
-### Add Subject Screen
+### Add New Subject
 
-![StudyFlow Add Subject Screen](https://github.com/user-attachments/assets/cacca6d4-ae2a-4c3a-9966-cb42acb952d9)
+![StudyFlow Add New Subject](https://github.com/user-attachments/assets/a6ff799e-8eb4-4dfb-a3b1-7a9e868d5da1)
 
-### Edit Subject Screen
+### Edit Subject
 
-![StudyFlow Edit Subject Screen](https://github.com/user-attachments/assets/24f971df-d7fb-48ec-a060-4f3214944adc)
+![StudyFlow Edit Subject](https://github.com/user-attachments/assets/196bd083-a059-4d65-ac51-6ae161521507)
 
-### Subject Details Screen
+### Subject Details
 
-![StudyFlow Subject Details Screen](https://github.com/user-attachments/assets/a6ff799e-8eb4-4dfb-a3b1-7a9e868d5da1)
+![StudyFlow Subject Details](https://github.com/user-attachments/assets/cacca6d4-ae2a-4c3a-9966-cb42acb952d9)
 
 ## Challenges and Implementation Decisions
 
@@ -211,13 +211,14 @@ https://github.com/Nethmiii1/StudyFlow
 
 ## Sprint 2 Deliverables
 
-The Sprint 2 submission includes:
+The Sprint 2 application includes:
 
-* React Native feature-complete application
+* Feature-complete React Native application
 * MockAPI REST API integration
 * GET, POST, PUT and DELETE operations
 * AsyncStorage local persistence
-* Loading, empty and error-state handling
+* Offline data access
+* Loading, empty, and error-state handling
 * Android APK built using Expo EAS
 * GitHub source-code repository
 * Technical summary
