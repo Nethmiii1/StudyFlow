@@ -1,224 +1,459 @@
-# StudyFlow 📚
+# 📚 StudyFlow
 
-## Target Domain
+## Mobile Application for Student Productivity
 
-Education and Student Productivity
+StudyFlow is a mobile application developed using **React Native and Expo** to help Computer Science students manage and organize their academic subjects in one place.
 
-## Mobile Application Name
+The application allows students to view, search, add, edit, delete, and manage subject information. It also uses a REST API and local storage to provide data persistence.
 
-StudyFlow
+---
 
-## Problem Statement
+## 🎯 Project Overview
 
-Computer Science students need to manage and access information about multiple subjects during their studies. Finding subject information quickly can be difficult when information is scattered across different places.
+### Target Domain
 
-StudyFlow provides a simple mobile application where students can view, search, create, update, and manage information about their academic subjects in one place.
+**Education and Student Productivity**
 
-## How StudyFlow Solves the Problem
+### Application Name
 
-StudyFlow provides students with an easy-to-use mobile interface for managing their academic subject information.
+**StudyFlow**
 
-The application allows users to:
+### Problem Statement
 
-* View a list of Computer Science subjects
-* Search for subjects by name
-* View detailed information about each subject
-* Add new subjects
-* Edit existing subjects
-* Delete subjects
-* Store subject data locally for offline access
-* Access application settings
-* Navigate between different screens easily
+Computer Science students need to manage and access information about multiple subjects during their studies. Finding and managing subject information can become difficult when information is stored in different places.
 
-## Main Features
+StudyFlow provides a simple mobile application where students can manage their academic subject information in one place.
 
-* Home screen with subject list
-* Subject list using FlatList
-* Subject search functionality
-* Subject details screen
-* Add new subjects
-* Edit existing subjects
-* Delete subjects
-* REST API integration using MockAPI
-* GET, POST, PUT and DELETE API operations
-* Local data persistence using AsyncStorage
-* Offline access to previously loaded subject data
-* Loading indicator while retrieving data
-* Empty-state handling
-* Network and API error handling
-* Settings screen with dark mode
-* Navigation between multiple application screens
-* State management using React Hooks
-* Responsive mobile interface
+---
 
-## Technologies Used
+## ✨ Main Features
 
-* React Native
-* Expo
-* JavaScript
-* React Navigation
-* FlatList
-* React Hooks
-* MockAPI
-* AsyncStorage
+* 🏠 Home screen with subject list
+* 🔍 Search subjects by name or subject code
+* 📖 View detailed subject information
+* ➕ Add new subjects
+* ✏️ Edit existing subjects
+* 🗑️ Delete subjects
+* 🌐 REST API integration
+* 💾 Local data persistence using AsyncStorage
+* 📡 Offline data access
+* 🌙 Light and Dark mode
+* 🔄 Automatic data refresh
+* ⏳ Loading indicator
+* ⚠️ Empty-state handling
+* ❌ API and network error handling
+* 📱 Android application build
 
-## REST API Integration
+---
 
-StudyFlow uses MockAPI as the backend REST API.
+## 🛠️ Technologies Used
 
-A `subjects` resource was created in MockAPI to store subject information. Each subject contains information such as:
+| Technology       | Purpose                           |
+| ---------------- | --------------------------------- |
+| React Native     | Mobile application development    |
+| Expo             | Development and application build |
+| JavaScript       | Programming language              |
+| React Navigation | Navigation between screens        |
+| React Hooks      | State and application management  |
+| FlatList         | Displaying subject lists          |
+| MockAPI          | REST API backend                  |
+| AsyncStorage     | Local data persistence            |
+| Git & GitHub     | Source code management            |
+
+---
+
+# 🌐 REST API Integration
+
+StudyFlow uses **MockAPI** as its REST API backend.
+
+### API Endpoint
+
+```text
+https://6a9edaa82f89be7fb70ea912.mockapi.io/api/subjects
+```
+
+The application communicates with the API using JavaScript `fetch()` requests.
+
+### API Operations
+
+| HTTP Method | Function                   |
+| ----------- | -------------------------- |
+| GET         | Retrieve subjects          |
+| POST        | Create a new subject       |
+| PUT / PATCH | Update an existing subject |
+| DELETE      | Delete a subject           |
+
+Each subject contains information such as:
 
 * Subject name
 * Subject code
 * Description
 * Automatically generated ID
 
-The application uses JavaScript `fetch()` to communicate with the REST API.
+---
 
-### API Operations
+# 💾 Local Storage and Offline Support
 
-* **GET** – Retrieves subjects from MockAPI and displays them in the application.
-* **POST** – Creates a new subject through the Add Subject screen.
-* **PUT** – Updates an existing subject through the Edit Subject screen.
-* **DELETE** – Deletes an existing subject from the Home screen.
+StudyFlow uses **AsyncStorage** to store subject information locally on the device.
 
-## Local Storage and Offline Support
+After successfully retrieving data from the API, subject information can be stored locally.
 
-StudyFlow uses AsyncStorage for local data persistence.
+This allows previously saved subject data to remain available even when the network connection is unavailable.
 
-After successfully retrieving subjects from MockAPI, the application stores the subject data locally as JSON in AsyncStorage.
+### Offline Flow
 
-When the network is unavailable, the application attempts to retrieve the previously stored subject data from AsyncStorage. This allows previously loaded subjects to remain accessible even when the device is offline.
+```text
+API Available
+     ↓
+Retrieve Subject Data
+     ↓
+Save Data to AsyncStorage
+     ↓
+Display Subjects
+```
 
-## Loading, Empty and Error Handling
+If the API or network is unavailable:
 
-The application provides appropriate feedback for different application states.
+```text
+API Unavailable
+     ↓
+Load Previously Saved Data
+     ↓
+AsyncStorage
+     ↓
+Display Subjects
+```
 
-* An `ActivityIndicator` is displayed while subject data is being loaded.
-* An empty-state message is displayed when no subjects match the search criteria.
-* API and network errors are handled using `try/catch`.
-* When the API cannot be reached, locally stored subject data is used where available.
+This improves the reliability and usability of the application.
 
-These features improve the reliability and usability of the application.
+---
 
-## Application Architecture
+# 📱 Application Screens
 
-StudyFlow is a React Native mobile application developed using Expo. The application follows a component-oriented architecture where different screens are responsible for specific functions.
+## 🏠 Home Screen
 
-The main screens include:
+The Home screen displays the available Computer Science subjects.
 
-* Home
-* Subject Details
-* Add Subject
-* Edit Subject
-* Settings
+Users can:
 
-React Navigation is used to navigate between screens.
+* View subjects
+* Search subjects
+* Open subject details
+* Edit subjects
+* Delete subjects
+* Add new subjects
 
-React Hooks such as `useState`, `useEffect`, `useFocusEffect`, and `useCallback` are used for state management and controlling data loading.
+### Screenshot
 
-The Home screen retrieves subjects from MockAPI and displays them using `FlatList`. The Add Subject screen handles POST requests, while the Edit Subject screen handles PUT requests. DELETE functionality is available from the Home screen.
+<img width="1917" height="1078" alt="Screenshot 2026-09-20 233135" src="https://github.com/user-attachments/assets/f80a535f-336f-4862-a206-9d1160b853dc" />
 
-## Application Screens
+---
 
-### Home Screen
+## ➕ Add Subject Screen
 
-The Home screen displays the subjects retrieved from MockAPI and provides a search function. Users can also add, edit, and delete subjects.
+The Add Subject screen allows users to create a new subject.
 
-### Add New Subject Screen
+Users can enter:
 
-The Add New Subject screen provides a form for creating a new subject. The entered information is submitted to MockAPI using a POST request.
+* Subject name
+* Subject code
+* Description
 
-### Edit Subject Screen
+The information is stored locally and submitted to the REST API.
 
-The Edit Subject screen allows users to modify an existing subject. The updated information is sent to MockAPI using a PUT request.
+### Screenshot
 
-### Subject Details Screen
+<img width="1917" height="1020" alt="Screenshot 2026-09-20 233203" src="https://github.com/user-attachments/assets/322f3f5d-932f-4a6f-8811-a412c7cd05a9" />
 
-The Subject Details screen displays detailed information about a selected subject.
+---
 
-### Settings Screen
+## ✏️ Edit Subject Screen
 
-The Settings screen provides application settings, including the dark mode option.
+The Edit Subject screen allows users to modify information about an existing subject.
 
-## Screenshots
+The updated information is sent to the REST API and stored locally.
 
-The following screenshots demonstrate the completed Sprint 2 version of StudyFlow.
+### Screenshot
 
-### Home Screen
+<img width="1917" height="1078" alt="Screenshot 2026-09-20 233224" src="https://github.com/user-attachments/assets/17548302-b2e4-4f64-a3f0-c4951718abe7" />
 
-![StudyFlow Home Screen](https://github.com/user-attachments/assets/24f971df-d7fb-48ec-a060-4f3214944adc)
+---
 
-### Add New Subject
+## 📖 Subject Details Screen
 
-![StudyFlow Add New Subject](https://github.com/user-attachments/assets/a6ff799e-8eb4-4dfb-a3b1-7a9e868d5da1)
+The Subject Details screen displays detailed information about the selected subject.
 
-### Edit Subject
+### Screenshot
 
-![StudyFlow Edit Subject](https://github.com/user-attachments/assets/196bd083-a059-4d65-ac51-6ae161521507)
+<img width="1917" height="1078" alt="Screenshot 2026-09-20 233250" src="https://github.com/user-attachments/assets/b3366a9c-9e69-433d-9db7-07a457f4d6ab" />
 
-### Subject Details
+---
 
-![StudyFlow Subject Details](https://github.com/user-attachments/assets/cacca6d4-ae2a-4c3a-9966-cb42acb952d9)
+## ⚙️ Settings Screen
 
-## Challenges and Implementation Decisions
+The Settings screen provides application settings, including the **Light Mode and Dark Mode** option.
 
-One challenge encountered during development was ensuring that the subject list was updated after a subject had been added or edited. `useFocusEffect` was used so that the Home screen could reload the most recent API data whenever the screen became active.
+### Screenshot
 
-Another challenge was testing the application in Expo Web and resolving runtime errors encountered during development.
+<img width="1917" height="1078" alt="Screenshot 2026-09-20 233306" src="https://github.com/user-attachments/assets/686d3c67-4e6c-4184-a76f-e06b47c12b5d" />
 
-A simple component-based architecture was selected to keep the application organised and maintainable. React Hooks were used for state and lifecycle management without requiring an additional external state-management library.
+---
 
-MockAPI was selected as the REST API backend because it provides a simple environment for demonstrating REST API operations. AsyncStorage was selected for local persistence because it is suitable for storing simple application data locally in a React Native application.
+# 🧭 Application Navigation
 
-## APK Build and Deployment
+StudyFlow contains the following main screens:
 
-The StudyFlow application was successfully built as an Android APK using Expo Application Services (EAS).
+```text
+                    StudyFlow
+                        |
+        ┌───────────────┼───────────────┐
+        |               |               |
+       Home          Settings      Other Screens
+        |                               |
+        ├── Subject Details             |
+        ├── Add Subject                 |
+        └── Edit Subject               |
+```
 
-The APK build was completed successfully and the generated APK was downloaded for installation, testing, and submission.
+React Navigation is used to move between the different screens.
 
-## How to Run the Application
+---
 
-### Prerequisites
+# ⚛️ React Native Concepts Used
 
-* Node.js
-* Expo
-* VS Code
+## useState
 
-### Installation
+`useState` is used to manage changing application data such as:
 
-1. Clone the StudyFlow repository.
-2. Open the project folder in VS Code.
-3. Install the required dependencies:
+* Subject lists
+* Search text
+* Form inputs
+* Loading states
+* Dark mode
+
+Example:
+
+```javascript
+const [subjects, setSubjects] = useState([]);
+```
+
+---
+
+## FlatList
+
+`FlatList` is used to efficiently display the list of subjects.
+
+```javascript
+<FlatList
+  data={filteredSubjects}
+  renderItem={...}
+/>
+```
+
+---
+
+## useFocusEffect
+
+`useFocusEffect` is used to reload subject information when the Home screen becomes active again.
+
+This helps the Home screen display updated information after adding or editing a subject.
+
+---
+
+# 🔄 CRUD Operations
+
+StudyFlow demonstrates CRUD operations.
+
+| CRUD   | StudyFlow Feature |
+| ------ | ----------------- |
+| Create | Add Subject       |
+| Read   | View Subjects     |
+| Update | Edit Subject      |
+| Delete | Delete Subject    |
+
+---
+
+# ⚠️ Error and State Handling
+
+The application handles different states during operation.
+
+### Loading State
+
+A loading indicator is displayed while subject data is being retrieved.
+
+### Empty State
+
+A message is displayed when no subjects match the search criteria.
+
+### Network/API Errors
+
+The application handles API or network errors and can use locally stored subject data when available.
+
+---
+
+# 🎨 User Interface
+
+The application uses a simple and colorful interface designed to make subject management easier.
+
+The application also supports:
+
+* Light mode
+* Dark mode
+* Search
+* Buttons for common actions
+* Loading feedback
+* User-friendly messages
+
+---
+
+# 📂 Project Structure
+
+```text
+StudyFlow/
+│
+├── screens/
+│   ├── HomeScreen.js
+│   ├── SubjectDetailsScreen.js
+│   ├── AddSubjectScreen.js
+│   ├── EditSubjectScreen.js
+│   └── SettingsScreen.js
+│
+├── App.js
+├── package.json
+├── README.md
+└── screenshots/
+```
+
+---
+
+# 🚀 How to Run the Application
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/Nethmiii1/StudyFlow.git
+```
+
+## 2. Open the project
+
+```bash
+cd StudyFlow
+```
+
+## 3. Install dependencies
 
 ```bash
 npm install
 ```
 
-4. Start the Expo development server:
+## 4. Start Expo
 
 ```bash
 npx expo start
 ```
 
-5. Open the application using an Android emulator, Expo Go, or a compatible device.
+## 5. Run on Web
 
-## Project Repository
+```bash
+npx expo start --web
+```
 
-GitHub repository:
+The application can also be tested using an Android device or emulator through Expo.
 
-https://github.com/Nethmiii1/StudyFlow
+---
 
-## Sprint 2 Deliverables
+# 📦 Android Build
 
-The Sprint 2 application includes:
+The application was also built as an Android APK using Expo Application Services (EAS).
 
-* Feature-complete React Native application
+Example build command:
+
+```bash
+npx eas build -p android --profile preview
+```
+
+The generated APK can be installed on an Android device for testing.
+
+---
+
+# 🧪 Testing
+
+The main application functions were tested during development:
+
+* Subject list loading
+* Search
+* Add Subject
+* Edit Subject
+* Delete Subject
+* Subject Details
+* REST API communication
+* Local storage
+* Offline data access
+* Light/Dark mode
+* Navigation between screens
+
+---
+
+# 🧠 Challenges and Solutions
+
+### API and Local Storage
+
+One challenge was keeping the application usable when API data was unavailable.
+
+**Solution:** AsyncStorage was implemented to store subject information locally.
+
+### Updating the Home Screen
+
+After adding or editing a subject, the Home screen needed to display the latest information.
+
+**Solution:** `useFocusEffect` was used to reload the subject data when the Home screen becomes active.
+
+### API Errors
+
+Network and API errors can occur during development.
+
+**Solution:** Error handling and locally stored data were implemented to improve application reliability.
+
+---
+
+# 🎓 Sprint 2 Deliverables
+
+The Sprint 2 implementation includes:
+
+* React Native mobile application
 * MockAPI REST API integration
-* GET, POST, PUT and DELETE operations
+* GET, POST, UPDATE and DELETE operations
 * AsyncStorage local persistence
 * Offline data access
-* Loading, empty, and error-state handling
-* Android APK built using Expo EAS
+* Add Subject
+* Edit Subject
+* Delete Subject
+* Search functionality
+* Subject Details
+* Settings and Dark Mode
+* Loading and error handling
+* Android APK build
 * GitHub source-code repository
-* Technical summary
+
+---
+
+# 👩‍💻 Developer
+
+**Nethmi Perera**
+
+Computer Science Student
+**ACBT**
+
+---
+
+# 🔗 GitHub Repository
+
+[StudyFlow GitHub Repository](https://github.com/Nethmiii1/StudyFlow)
+
+---
+
+## 📌 Project Summary
+
+StudyFlow demonstrates the development of a React Native mobile application with **REST API integration, local data persistence, navigation, state management, CRUD operations, search functionality, and offline support**.
+
+The project was developed as part of the **Mobile Application Development** module.
